@@ -11,6 +11,19 @@ export class ProductsService {
         return this.prismaService.product.findMany();
     }
 
+    public getextendedAll(): Promise<Product[]> {
+      return this.prismaService.product.findMany({
+        include: { orders: true } 
+      });
+    }
+
+    public getextendedById(id: Product['id']): Promise<Product | null> {
+      return this.prismaService.product.findUnique({
+        where: { id },
+        include: { orders: true } 
+      });
+    }
+
     public getById(id: Product['id']): Promise<Product | null> {
         return this.prismaService.product.findUnique({
           where: { id },
