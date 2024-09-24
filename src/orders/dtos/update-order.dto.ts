@@ -3,15 +3,12 @@ import { IsInt, IsNotEmpty, IsString, Length, Min, IsUUID } from 'class-validato
 
 export class UpdateOrderDTO {
   @IsNotEmpty()
-  @Length(3, 20)
-  client: string;
-
-  @IsNotEmpty()
   @IsUUID()
   @IsString()
   productId: string;
 
   @IsString()
+  @IsUUID()
   @IsNotEmpty()
-  address: string;
+  clientId: string;
 }
